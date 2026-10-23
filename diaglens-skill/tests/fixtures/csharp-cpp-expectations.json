@@ -1,0 +1,12 @@
+{
+  "sample.cs": {
+    "language": "csharp",
+    "boundaries": ["external_http_call", "db_call", "queue_producer", "catch_block", "timeout_handler", "state_change"],
+    "evidence": ["logging", "structured_fields", "exception_context", "status_error", "latency", "retry_timeout"]
+  },
+  "sample.cpp": {
+    "language": "cpp",
+    "boundaries": ["external_http_call", "queue_producer", "catch_block", "timeout_handler", "state_change"],
+    "evidence": ["logging", "structured_fields", "exception_context", "status_error", "latency", "retry_timeout"]
+  }
+}
