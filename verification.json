@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-10-23T12:08:21.235761+00:00",
+  "scope": "Frozen main RQ2 only; no extension or human-grade replacement",
+  "counts": {
+    "targets": 223,
+    "completed": 206,
+    "unavailable": 17,
+    "unavailable_types": {
+      "unavailable_failed": 16,
+      "unavailable_budget": 1
+    },
+    "completed_empty_reports": 40,
+    "findings": 393,
+    "finding_grade_counts": {
+      "0": 342,
+      "1": 47,
+      "2": 4
+    },
+    "strict_hits": 2,
+    "lenient_hits": 22,
+    "strict_recall_completed": 0.009708737864077669,
+    "strict_recall_full_cohort": 0.008968609865470852,
+    "lenient_recall_completed": 0.10679611650485436,
+    "lenient_recall_full_cohort": 0.09865470852017937,
+    "problem_category_counts": {
+      "cat1": 169,
+      "cat2": 54
+    },
+    "improvement_type_counts": {
+      "failure_context": 163,
+      "representation_repair": 54,
+      "timeout_recovery": 6
+    },
+    "same_finding_joint_matches_recomputed": true,
+    "matches_frozen_target_results_and_statistics": true
+  },
+  "verbatim_copy_files": [
+    "codebook.md",
+    "prompts/aspect-extraction.txt",
+    "prompts/content-judgment.txt",
+    "prompts/observability-annotation-v2.txt",
+    "prompts/scan.txt",
+    "rubric.md"
+  ],
+  "verbatim_copy_hash_checks_passed": true,
+  "skill_version": "1.1.0",
+  "complete_skill_file_count": 11,
+  "skill_files_changed_only_for_distribution": [
+    "diaglens-skill/.claude-plugin/plugin.json",
+    "diaglens-skill/.mcp.json",
+    "diaglens-skill/README.md",
+    "diaglens-skill/SNAPSHOT_MANIFEST.json",
+    "diaglens-skill/agency.json",
+    "diaglens-skill/skills/diaglens/SKILL.md"
+  ],
+  "identifier_redactions": [
+    {
+      "file": "agency.json",
+      "category": "removed_authors_metadata",
+      "occurrences": 1
+    },
+    {
+      "file": ".claude-plugin/plugin.json",
+      "category": "removed_author_metadata",
+      "occurrences": 1
+    },
+    {
+      "file": ".claude-plugin/plugin.json",
+      "category": "removed_homepage_metadata",
+      "occurrences": 1
+    },
+    {
+      "file": ".mcp.json",
+      "category": "internal_service_endpoint",
+      "occurrences": 1
+    },
+    {
+      "file": "README.md",
+      "category": "affiliation_reference",
+      "occurrences": 1
+    },
+    {
+      "file": "skills/diaglens/SKILL.md",
+      "category": "affiliation_reference",
+      "occurrences": 1
+    },
+    {
+      "file": "skills/diaglens/SKILL.md",
+      "category": "internal_service_endpoint",
+      "occurrences": 1
+    },
+    {
+      "file": "SNAPSHOT_MANIFEST.json",
+      "category": "removed_private_provenance_and_rehashed_distribution",
+      "occurrences": 1
+    }
+  ],
+  "identity_screening": {
+    "status": "passed",
+    "files_checked": 21,
+    "checks": [
+      "email",
+      "absolute_windows_path",
+      "unc_path",
+      "absolute_unix_path",
+      "identity_or_affiliation",
+      "private_hostname",
+      "URL_allowlist",
+      "known_real_PR_IDs"
+    ],
+    "real_identifier_matches": 0,
+    "remaining_identifier_matches": 0
+  },
+  "private_mapping_in_package": false,
+  "production_target_code_in_package": false,
+  "frozen_sources_modified": false,
+  "publication_destination": "Existing private remote; not a public repository publication"
+}
