@@ -1,0 +1,19 @@
+{
+  "name": "diaglens",
+  "description": "Source-level diagnosability scanner for Python, TypeScript, C#, and C++. Flags failure-relevant code boundaries missing runtime evidence.",
+  "version": "1.1.0",
+  "keywords": [
+    "diagnosability",
+    "observability",
+    "logging",
+    "telemetry",
+    "code-review",
+    "pr-review",
+    "static-analysis",
+    "exception-context",
+    "csharp",
+    "cplusplus",
+    "bluebird",
+    "mcp"
+  ]
+}
