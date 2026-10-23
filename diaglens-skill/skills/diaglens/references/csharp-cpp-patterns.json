@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "purpose": "Candidate discovery for source-level C# and C++ DiagLens review. Matches require contextual review and never prove evidence sufficiency by themselves. Python and TypeScript use the pre-existing skill workflow and are intentionally excluded.",
+  "languages": {
+    "csharp": {
+      "display_name": "C#",
+      "extensions": [".cs", ".csx"],
+      "boundary_patterns": {
+        "external_http_call": [
+          "\\b(HttpClient|HttpRequestMessage|IHttpClientFactory)\\b",
+          "\\.(Get|Post|Put|Patch|Delete|Send)(Async)?\\s*\\("
+        ],
+        "db_call": [
+          "\\b(DbContext|DbConnection|IDbConnection|SqlConnection|SqlCommand|NpgsqlConnection)\\b",
+          "\\.(ExecuteReader|ExecuteNonQuery|ExecuteScalar|Query|Execute|SaveChanges)(Async)?\\s*\\("
+        ],
+        "queue_producer": [
+          "\\b(ServiceBusSender|QueueClient|IProducer<|MessageSender)\\b",
+          "\\.(SendMessage|SendMessages|Publish|Produce)(Async)?\\s*\\("
+        ],
+        "queue_consumer": [
+          "\\b(ServiceBusProcessor|ServiceBusReceiver|IConsumer<|BackgroundService)\\b",
+          "\\b(ProcessMessageAsync|ExecuteAsync|ReceiveMessageAsync)\\s*\\("
+        ],
+        "filesystem_io": [
+          "\\b(File|Directory)\\.(Read|Write|Open|Move|Delete|Copy)",
+          "\\b(FileStream|StreamReader|StreamWriter)\\b"
+        ],
+        "catch_block": [
+          "\\bcatch\\s*(?:\\([^)]*\\))?\\s*\\{"
+        ],
+        "retry_loop": [
+          "\\b(WaitAndRetry|RetryAsync|AddRetry|ResiliencePipeline|Polly)\\b",
+          "\\b(attempt|retryCount|maxRetries|backoff)\\b"
+        ],
+        "timeout_handler": [
+          "\\b(CancellationTokenSource|CancelAfter|Task\\.WhenAny|TimeoutException)\\b",
+          "\\b(timeout|Timeout)\\b"
+        ],
+        "state_change": [
+          "\\.(SaveChanges|Update|Remove|Commit)(Async)?\\s*\\(",
+          "\\b(State|Status)\\s*="
+        ],
+        "endpoint": [
+          "\\[(HttpGet|HttpPost|HttpPut|HttpPatch|HttpDelete|Route)\\b",
+          "\\b(MapGet|MapPost|MapPut|MapPatch|MapDelete)\\s*\\("
+        ],
+        "webhook": [
+          "\\b(Webhook|WebHook)\\b",
+          "\\[(HttpPost|HttpPut)[^\\n]*webhook"
+        ],
+        "async_consumer": [
+          "\\b(BackgroundService|IHostedService|ExecuteAsync|ProcessMessageAsync)\\b",
+          "\\bawait\\s+foreach\\s*\\("
+        ]
+      },
+      "evidence_patterns": {
+        "logging": [
+          "\\b[A-Za-z_][A-Za-z0-9_.]*\\.(LogTrace|LogDebug|LogInformation|LogWarning|LogError|LogCritical|Debug|Information|Warning|Error|Fatal)\\s*\\(",
+          "\\[LoggerMessage\\b"
+        ],
+        "structured_fields": [
+          "\\{[A-Za-z_][A-Za-z0-9_]*\\}",
+          "\\b(EventId|LoggerMessage)\\b"
+        ],
+        "exception_context": [
+          "\\bcatch\\s*\\(\\s*[A-Za-z_][A-Za-z0-9_.<>]*\\s+[A-Za-z_][A-Za-z0-9_]*",
+          "\\bthrow\\s*;",
+          "\\b(innerException|ExceptionDispatchInfo|GetBaseException)\\b"
+        ],
+        "status_error": [
+          "\\b(StatusCode|HttpRequestError|ErrorCode|SqlException\\.Number|SocketErrorCode)\\b"
+        ],
+        "correlation": [
+          "\\b(Activity\\.(Current|TraceId)|TraceIdentifier|CorrelationId|RequestId)\\b"
+        ],
+        "latency": [
+          "\\b(Stopwatch|Elapsed|ElapsedMilliseconds|latency|duration)\\b"
+        ],
+        "retry_timeout": [
+          "\\b(attempt|retryCount|maxRetries|backoff|timeout|CancellationToken)\\b"
+        ],
+        "state_context": [
+          "\\b(previousState|newState|oldStatus|newStatus|actor|initiator)\\b"
+        ]
+      }
+    },
+    "cpp": {
+      "display_name": "C++",
+      "extensions": [".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx"],
+      "boundary_patterns": {
+        "external_http_call": [
+          "\\b(cpr::|curl_easy_perform|Poco::Net|boost::beast|web::http::client)\\b",
+          "\\b(http::async_|async_read|async_write)\\b"
+        ],
+        "db_call": [
+          "\\b(SQLExecDirect|SQLExecute|sqlite3_(step|exec)|PQexec|mysql_(query|real_query))\\b",
+          "\\b(soci::session|sqlpp::|pqxx::)\\b"
+        ],
+        "queue_producer": [
+          "\\b(produce|publish|enqueue|send_message)\\s*\\(",
+          "\\b(KafkaProducer|ServiceBusSender|MessageProducer)\\b"
+        ],
+        "queue_consumer": [
+          "\\b(consume|dequeue|receive_message|process_message)\\s*\\(",
+          "\\b(KafkaConsumer|ServiceBusReceiver|MessageConsumer)\\b"
+        ],
+        "filesystem_io": [
+          "\\b(std::(i|o|f)stream|std::filesystem|ifstream|ofstream)\\b",
+          "\\b(::read|::write|fread|fwrite|open)\\s*\\("
+        ],
+        "catch_block": [
+          "\\bcatch\\s*(?:\\([^)]*\\))?\\s*\\{"
+        ],
+        "retry_loop": [
+          "\\b(retry|attempt|max_retries|backoff)\\b",
+          "\\b(for|while)\\s*\\([^\\n]*(retry|attempt)"
+        ],
+        "timeout_handler": [
+          "\\b(wait_for|wait_until|expires_after|CURLOPT_TIMEOUT|timed_out)\\b",
+          "\\b(timeout|deadline)\\b"
+        ],
+        "state_change": [
+          "\\b(commit|rollback|update|remove|erase)\\s*\\(",
+          "\\b(state|status)\\s*="
+        ],
+        "endpoint": [
+          "\\b(route|endpoint|request_handler|webhook_handler)\\b"
+        ],
+        "webhook": [
+          "\\b(webhook|webhook_handler)\\b"
+        ],
+        "async_consumer": [
+          "\\b(co_await|std::async|std::future|io_context|completion_handler)\\b"
+        ]
+      },
+      "evidence_patterns": {
+        "logging": [
+          "\\b(LOG|VLOG|DLOG|PLOG)\\s*\\(",
+          "\\b(spdlog::|BOOST_LOG_TRIVIAL|glog|quill::|LOG_[A-Z_]+\\s*\\()"
+        ],
+        "structured_fields": [
+          "\\b(key_value|LOG_KV|field|attribute)\\s*\\(",
+          "[\"'][A-Za-z_][A-Za-z0-9_]*[\"']\\s*[,=:]",
+          "\\b[A-Za-z_][A-Za-z0-9_]*=\\{\\}"
+        ],
+        "exception_context": [
+          "\\bcatch\\s*\\(\\s*const\\s+std::exception\\s*&\\s*\\w+",
+          "\\.what\\s*\\(",
+          "\\b(throw_with_nested|rethrow_exception|current_exception)\\b"
+        ],
+        "status_error": [
+          "\\b(error_code|status_code|errno|HRESULT|GetLastError|\\.value\\s*\\(|\\.message\\s*\\(|\\.category\\s*\\()"
+        ],
+        "correlation": [
+          "\\b(correlation_id|request_id|trace_id|span_id|activity_id)\\b"
+        ],
+        "latency": [
+          "\\b(steady_clock|duration_cast|elapsed|latency|duration)\\b"
+        ],
+        "retry_timeout": [
+          "\\b(attempt|retry_count|max_retries|backoff|timeout|deadline)\\b"
+        ],
+        "state_context": [
+          "\\b(previous_state|new_state|old_status|new_status|actor|initiator)\\b"
+        ]
+      }
+    }
+  }
+}
