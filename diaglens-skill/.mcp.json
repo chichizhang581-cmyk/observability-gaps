@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "bluebird-mcp": {
+      "type": "http",
+      "url": "https://example.invalid/code-access/",
+      "headers": {
+        "x-mcp-ec-organization": "YOUR_ADO_ORGANIZATION",
+        "x-mcp-ec-project": "YOUR_ADO_PROJECT",
+        "x-mcp-ec-repository": "YOUR_ADO_REPOSITORY",
+        "x-mcp-ec-branch": "main"
+      }
+    }
+  }
+}

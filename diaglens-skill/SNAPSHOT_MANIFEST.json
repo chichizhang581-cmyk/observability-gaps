@@ -1,0 +1,63 @@
+{
+  "schema_version": "public-anonymized-1.0",
+  "plugin_name": "diaglens",
+  "plugin_version": "1.1.0",
+  "distribution": "Identifier-anonymized copy of the frozen v1.1.0 skill",
+  "hash_scope": "Distributed bytes; manifest itself excluded",
+  "content_hash_definition": "SHA-256 of sorted '<sha256>  <relative-path>\\n' UTF-8 lines",
+  "content_hash": "4818a61abf91e65be39afe384b715cfe9e6438ede5f725589fd1354244e854b3",
+  "files": {
+    ".claude-plugin/plugin.json": "430c09bb9d8a806c7fd37ee386bc5bef27418e36c940c508eac4c09f307833c7",
+    ".mcp.json": "e13ab8ae49be3b275a3d8e47f65514eca2aa9a64a4538a97331be8bdff13fb75",
+    "README.md": "861dac7a7ec8e1b4b1f88d816b3a63d887b6e1d34ee1ecfdf7f2a1a72698ce68",
+    "agency.json": "176bb79a2ab197b70860133187797072b6457b2aba1a136f6c91ab608da2575a",
+    "skills/diaglens/SKILL.md": "f4837b6ee9a5ff0892c16a29c48588042ae85dc9333261cd34816a3a395b15d2",
+    "skills/diaglens/references/csharp-cpp-patterns.json": "9450400ef51c62f7852a9cef1e22d46292a65c119d577a342c1c62c35215a94b",
+    "tests/csharp-cpp-support.test.js": "d5b6e266593b742d6c47863e48615934e972551dda3db1b276e562d7b4dddda0",
+    "tests/fixtures/csharp-cpp-expectations.json": "d0d26b045c50ece17b99e7ed40386bfd500de868d52abc04afc732777466f2f0",
+    "tests/fixtures/sample.cpp": "afe95e3c3d820153bb4c8c8eeae6b8fc0c3e978ec6d3e9c9c154de4540517a0a",
+    "tests/fixtures/sample.cs": "c30919fad555832573b6d5ff11a2391d8d8ba94622d3a71f19ee3c77039423fa"
+  },
+  "changes": [
+    {
+      "file": "agency.json",
+      "category": "removed_authors_metadata",
+      "occurrences": 1
+    },
+    {
+      "file": ".claude-plugin/plugin.json",
+      "category": "removed_author_metadata",
+      "occurrences": 1
+    },
+    {
+      "file": ".claude-plugin/plugin.json",
+      "category": "removed_homepage_metadata",
+      "occurrences": 1
+    },
+    {
+      "file": ".mcp.json",
+      "category": "internal_service_endpoint",
+      "occurrences": 1
+    },
+    {
+      "file": "README.md",
+      "category": "affiliation_reference",
+      "occurrences": 1
+    },
+    {
+      "file": "skills/diaglens/SKILL.md",
+      "category": "affiliation_reference",
+      "occurrences": 1
+    },
+    {
+      "file": "skills/diaglens/SKILL.md",
+      "category": "internal_service_endpoint",
+      "occurrences": 1
+    },
+    {
+      "file": "SNAPSHOT_MANIFEST.json",
+      "category": "removed_private_provenance_and_rehashed_distribution",
+      "occurrences": 1
+    }
+  ]
+}

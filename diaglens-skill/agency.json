@@ -1,0 +1,7 @@
+{
+  "engines": [
+    "claude",
+    "copilot"
+  ],
+  "category": "developer-tools"
+}
